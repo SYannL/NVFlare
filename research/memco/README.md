@@ -2,9 +2,13 @@
 
 This NVIDIA FLARE research example ports the latest MemCo implementation to the
 released high-level Collab API. It preserves the local/global graph-memory method from
-the [MemCo source artifact](https://github.com/SYannL/nvdamas/tree/main) while using
+the [MemCo reference implementation](https://github.com/SYannL/nvdamas/tree/main) while using
 NVIDIA FLARE to coordinate domain clients, exchange memory artifacts, rebuild shared
 global memory, and evaluate the resulting collaboration.
+
+**Paper:** [MemCo: Memory-Centric Collaboration for Generalizing LLM Agents to Unseen
+Environments](https://arxiv.org/abs/2610.07376)
+([arXiv:2610.07376](https://arxiv.org/abs/2610.07376), 2026)
 
 MemCo enables agents to reuse experience across environments without copying
 environment-specific details into shared memory. It maintains a local graph for
@@ -18,14 +22,16 @@ global workflow guidance, and failure reflection.
 
 ## Publication Status
 
-This research contribution is currently unpublished. Paper and citation information
-will be added when they become available.
+MemCo is publicly available as an arXiv preprint by Xinting Liao, Siyan Liu,
+Rabab K. Ward, Holger R. Roth, and Xiaoxiao Li.
 
 ## Headline Results
 
-![ALFWorld accuracy and interaction efficiency across backbones](assets/alfworld_performance_with_backbone_comparison.png)
+![ALFWorld accuracy and interaction efficiency across backbones][alfworld-results]
 
-The source artifact reports the following results for the submitted MemCo method:
+[alfworld-results]: assets/alfworld_performance_with_backbone_comparison.png
+
+The arXiv preprint reports the following results for MemCo:
 
 - Qwen3-32B reaches 96.62% seen and 97.46% unseen ALFWorld accuracy, with 9.71 and
   11.23 average environment steps. Against G-Memory, this is an improvement of 9.93
@@ -40,9 +46,9 @@ The source artifact reports the following results for the submitted MemCo method
   per decision, compared with 9.99 for fixed L5+G5 concatenation, while improving
   unseen accuracy by 16.07 percentage points.
 
-These are paper-artifact results rather than precomputed outputs bundled with this
-NVIDIA FLARE example. Exact values from a new run depend on the model endpoint,
-benchmark assets, task order, and runtime configuration.
+These are results reported in the arXiv preprint rather than precomputed outputs
+bundled with this NVIDIA FLARE example. Exact values from a new run depend on the
+model endpoint, benchmark assets, task order, and runtime configuration.
 
 ## Method Overview
 
@@ -337,7 +343,7 @@ PDDL2, generated memories, logs, model checkpoints, private credentials, and
 machine-specific configuration.
 
 The MemCo implementation is derived from the
-[MemCo source artifact](https://github.com/SYannL/nvdamas/tree/main), which builds on
+[MemCo reference implementation](https://github.com/SYannL/nvdamas/tree/main), which builds on
 the public [GMemory](https://github.com/bingreeky/GMemory) research codebase and uses
 the official ALFWorld, FEVER, and PDDLGym-derived environments.
 
@@ -353,5 +359,17 @@ upstream license; its benchmark data is not redistributed as part of this code.
 
 ## Citation
 
-MemCo is currently unpublished. Citation information and a BibTeX entry will be added
-when the paper becomes available.
+Please cite the arXiv preprint:
+
+```bibtex
+@misc{liao2026memco,
+  title         = {MemCo: Memory-Centric Collaboration for Generalizing LLM Agents
+                   to Unseen Environments},
+  author        = {Xinting Liao and Siyan Liu and Rabab K. Ward and Holger R. Roth and Xiaoxiao Li},
+  year          = {2026},
+  eprint        = {2610.07376},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2610.07376}
+}
+```
